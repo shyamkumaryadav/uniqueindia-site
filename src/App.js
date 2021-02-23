@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import firebase from './firebase';
+import { Layout, Drawer } from 'antd';
+
+import { Button } from 'antd';
 
 function App() {
+  
+  const [mess, setMess] = useState("Hello world");
+  const [drawer, setDrawer] = useState(false);
+
+  useEffect(() => {
+    console.log("use effect")
+    console.log(firebase)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Layout>
+      <Drawer
+          title="Basic Drawer"
+          placement='left'
+          closable={true}
+          onClose={() => setDrawer(false)}
+          visible={drawer}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
+      <Layout>
+          <Button onClick={() => setMess(Math.random())} type="primary">Button</Button>
+          <Button onClick={() => setDrawer(true)}>show drawer</Button>
+          <h1>{ mess }</h1>
+        
+      </Layout>
+      <div>Foo</div>
+      
+    </Layout>
   );
 }
 
