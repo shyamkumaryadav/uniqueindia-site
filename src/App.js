@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
 import firebase from './firebase';
-import { Layout, Drawer } from 'antd';
+import { Layout} from 'antd';
+import About from './components/about'
+import Terms from './components/terms'
+import Home from './components/index'
+import Page404 from './components/page404'
+import AppHeader from './components/Layouts/Header';
+import AppFooter from './components/Layouts/Footer';
 
-import { Button } from 'antd';
+const { Header, Content, Footer } = Layout;
 
 function App() {
   
@@ -15,26 +22,27 @@ function App() {
   }, [])
 
   return (
-    <Layout>
-      <Drawer
-          title="Basic Drawer"
-          placement='left'
-          closable={true}
-          onClose={() => setDrawer(false)}
-          visible={drawer}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Drawer>
-      <Layout>
-          <Button onClick={() => setMess(Math.random())} type="primary">Button</Button>
-          <Button onClick={() => setDrawer(true)}>show drawer</Button>
-          <h1>{ mess }</h1>
-        
-      </Layout>
-      <div>Foo</div>
-      
+    <Layout className="mainLayout">
+      <Header>
+        <AppHeader />
+      </Header>
+      <Content>
+        <Switch>
+          <Route exact path="/index" >
+            <Home />
+          </Route>
+          <Route path="/about" >
+            <About />
+          </Route>
+          <Route path="/terms" >
+            <Terms />
+          </Route>
+          <Route component={Page404} />
+        </Switch>
+      </Content>
+      <Footer>
+       <AppFooter />
+      </Footer>
     </Layout>
   );
 }
