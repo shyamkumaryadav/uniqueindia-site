@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import firebase from './firebase';
-import { Layout} from 'antd';
 import About from './components/about'
 import Terms from './components/terms'
 import Home from './components/index'
 import Page404 from './components/page404'
-import AppHeader from './components/Layouts/Header';
-import AppFooter from './components/Layouts/Footer';
+import AppHeader from './components/Layouts/AppHeader';
+import AppFooter from './components/Layouts/AppFooter';
 
-const { Header, Content, Footer } = Layout;
 
 function App() {
   
@@ -22,12 +20,17 @@ function App() {
   }, [])
 
   return (
-    <Layout className="mainLayout">
-      <Header>
+    <>
+      <nav>
         <AppHeader />
-      </Header>
-      <Content>
+      </nav>
+      <main>
         <Switch>
+          <Route exact path="/">
+            <div>
+              Main page
+            </div>
+          </Route>
           <Route exact path="/index" >
             <Home />
           </Route>
@@ -39,11 +42,11 @@ function App() {
           </Route>
           <Route component={Page404} />
         </Switch>
-      </Content>
-      <Footer>
+      </main>
+      <footer >
        <AppFooter />
-      </Footer>
-    </Layout>
+      </footer>
+    </>
   );
 }
 
