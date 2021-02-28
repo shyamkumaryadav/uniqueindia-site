@@ -3,22 +3,32 @@ import React from 'react';
 
 function AppFooter() {
   return (
-    <div className="container-fluid">
-      <div className="footer">
-        <div className="logo">
-          <i className="fas fa-bolt"></i>
-          <a href="/">Tech</a>
+    <footer className="page-footer darken-2 blue">
+      <div className="container">
+        <div className="row">
+          <div className="col l6 s12">
+            <h5 className="white-text">Unique India</h5>
+            <p className="grey-text text-lighten-4">Human activity is hugely responsible for damaging the environment. <a className="tooltipped grey-text text-lighten-3" data-position="bottom" href="https://www.instagram.com/explore/tags/uniquecleanup/" data-tooltip="explore this tag" target="_blank" rel="noreferrer">#uniquecleanup</a>.</p>
+          </div>
+          <div className="col l4 offset-l2 s12">
+            <h5 className="white-text">Social Links</h5>
+            <ul>
+              <li><a rel="noreferrer" className="grey-text text-lighten-3" href="//instagram.com/uniqueindia289" target="_blank">Instagram</a></li>
+              <li><a rel="noreferrer" className="grey-text text-lighten-3" href="//facebook.com/uniqueindia289" target="_blank">Facebook</a></li>
+              <li><span className="grey-text text-lighten-3 disabled">YouTube</span></li>
+              <li><span className="grey-text text-lighten-3 disabled">Twitter</span></li>
+              <li><span className="grey-text text-lighten-3 disabled">Reddit</span></li>
+            </ul>
+          </div>
         </div>
-        <ul className="socials">
-          <li><a href="https://www.facebook.com/"><i className="fab fa-facebook-f"></i></a></li>
-          <li><a href="https://www.twitter.com/"><i className="fab fa-twitter"></i></a></li>
-          <li><a href="https://www.linkedin.com/"><i className="fab fa-linkedin-in"></i></a></li>
-          <li><a href="https://www.pinterest.com/"><i className="fab fa-pinterest-p"></i></a></li>
-          <li><a href="https://www.instagram.com/"><i className="fab fa-instagram"></i></a></li>
-        </ul>
-        <div className="copyright">Copyright &copy; 2020 Tech</div>
       </div>
-    </div>
+      <div className="footer-copyright">
+        <div className="container">
+          © 2014 Copyright Text
+          <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
   );
 }
 

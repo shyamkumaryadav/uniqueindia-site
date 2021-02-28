@@ -1,51 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import firebase from './firebase';
+import M from 'materialize-css'
+// import firebase from './firebase';
 import About from './components/about'
 import Terms from './components/terms'
-import Home from './components/index'
+import Home from './views/Home'
 import Page404 from './components/page404'
 import AppHeader from './components/Layouts/AppHeader';
 import AppFooter from './components/Layouts/AppFooter';
 
 
 function App() {
-  
-  const [mess, setMess] = useState("Hello world");
-  const [drawer, setDrawer] = useState(false);
-
+  M.AutoInit();
   useEffect(() => {
-    console.log("use effect")
-    console.log(firebase)
+    // console.log("use effect")
   }, [])
 
   return (
     <>
-      <nav>
-        <AppHeader />
-      </nav>
+      <AppHeader />
       <main>
-        <Switch>
-          <Route exact path="/">
-            <div>
-              Main page
-            </div>
-          </Route>
-          <Route exact path="/index" >
-            <Home />
-          </Route>
-          <Route path="/about" >
-            <About />
-          </Route>
-          <Route path="/terms" >
-            <Terms />
-          </Route>
-          <Route component={Page404} />
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route exact path="/" name="Home">
+              <Home></Home>
+            </Route>
+            <Route exact path="/index" name="Index" >
+              <Home />
+            </Route>
+            <Route path="/about" name="About">
+              <About />
+            </Route>
+            <Route path="/terms" name="Terms">
+              <Terms />
+            </Route>
+            <Route component={Page404} name="ErrorPage" />
+          </Switch>
+        </div>
       </main>
-      <footer >
-       <AppFooter />
-      </footer>
+      <AppFooter />
     </>
   );
 }
